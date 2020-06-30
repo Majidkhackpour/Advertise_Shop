@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,12 +85,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\References\DevComponents.TreeGX.dll</HintPath>
     </Reference>
-    <Reference Include="EntityCache">
-      <HintPath>..\..\..\References\EntityCache.dll</HintPath>
-    </Reference>
-    <Reference Include="PacketParser">
-      <HintPath>..\..\..\References\PacketParser.dll</HintPath>
-    </Reference>
     <Reference Include="persianCalender">
       <HintPath>..\..\..\References\persianCalender.dll</HintPath>
     </Reference>
@@ -98,11 +94,10 @@
     <Reference Include="PersianDateControls">
       <HintPath>..\..\..\References\PersianDateControls.dll</HintPath>
     </Reference>
-    <Reference Include="SqlServerPersistence">
-      <HintPath>..\..\..\References\SqlServerPersistence.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -112,12 +107,101 @@
     <Reference Include="UC_Date">
       <HintPath>..\..\..\References\UC_Date.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Shop_Windows\Shop_Windows\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DivarAdv.cs" />
+    <Compile Include="Classes\Utility.cs" />
+    <Compile Include="DivarRobot_Form\frmShowSimcard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DivarRobot_Form\frmShowSimcard.Designer.cs">
+      <DependentUpon>frmShowSimcard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DivarRobot_Form\frmSimcard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DivarRobot_Form\frmSimcard.Designer.cs">
+      <DependentUpon>frmSimcard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Email_Form\frmSendEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Email_Form\frmSendEmail.Designer.cs">
+      <DependentUpon>frmSendEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification_Form\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification_Form\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification_Form\frmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notification_Form\frmNotification.Designer.cs">
+      <DependentUpon>frmNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DivarRobot_Form\frmShowSimcard.resx">
+      <DependentUpon>frmShowSimcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DivarRobot_Form\frmSimcard.resx">
+      <DependentUpon>frmSimcard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Email_Form\frmSendEmail.resx">
+      <DependentUpon>frmSendEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification_Form\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification_Form\frmNotification.resx">
+      <DependentUpon>frmNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\WebService\WebService\EntityCache\EntityCache.csproj">
+      <Project>{41b715f0-dc5a-4424-ad7b-9bac9ad5a132}</Project>
+      <Name>EntityCache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WebService\WebService\PacketParser\PacketParser.csproj">
+      <Project>{24329a11-1d13-47ca-ac26-1843a43e0633}</Project>
+      <Name>PacketParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\WebService\WebService\SqlServerPersistence\SqlServerPersistence.csproj">
+      <Project>{8dc0af9f-14ef-4cef-88fd-0d12969a1200}</Project>
+      <Name>SqlServerPersistence</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\563ba6c1-5628-4d77-92ef-f30aacf8c8de.gif" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(Configuration) == Release  echo F| xcopy /Y "$(TargetPath)" "D:\Projects\References\$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\..\..\Shop_Windows\Shop_Windows\packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3900\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\..\..\Shop_Windows\Shop_Windows\packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3900\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\Shop_Windows\Shop_Windows\packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3900\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\Shop_Windows\Shop_Windows\packages\Selenium.WebDriver.ChromeDriver.83.0.4103.3900\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
 </Project>
